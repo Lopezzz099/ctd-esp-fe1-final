@@ -15,8 +15,12 @@ import { Character } from "../../types/types";
  *
  * @returns un JSX element
  */
+interface GrillaPersonajesProps {
+  favs?: boolean;
+}
 
-const GrillaPersonajes: React.FC = () => {
+const GrillaPersonajes: React.FC<GrillaPersonajesProps> = ({ favs = false }) => {
+
   const characters = useSelector(
     (state: RootState) => state.characters.characters
   );
@@ -31,12 +35,20 @@ const GrillaPersonajes: React.FC = () => {
     dispatch(fetchCharacters({ page: 1 }));
   }, [dispatch]);
 
+  const favorites = useSelector((state: RootState) => state.favs.favs);
+
   return (
     <div className="grilla-personajes">
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
         <div>Error: {error}</div>
+      ) : favs ? (
+        <>
+          {favorites.map((character: Character) => (
+            <TarjetaPersonaje key={character.id} character={character} />
+          ))}
+        </>
       ) : (
         <>
           {characters.map((character: Character) => (

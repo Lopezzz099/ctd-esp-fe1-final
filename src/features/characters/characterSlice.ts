@@ -24,7 +24,7 @@ export const fetchCharacters = createAsyncThunk(
     if (!response) {
       throw new Error('Error al obtener los personajes')
     }
-
+    
     const data = await response.json();
     return { characters: data.results, pagination: data.info}
   }

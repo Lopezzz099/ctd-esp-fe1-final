@@ -21,7 +21,6 @@ const PaginaDetalle = () => {
             <div className={"detalle-header"}>
                 <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
                 <div className={"detalle-header-texto"}>
-
                     <p>Rick Sanchez</p>
                     <p>Planeta: Earth</p>
                     <p>Genero: Male</p>
