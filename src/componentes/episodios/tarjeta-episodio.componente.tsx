@@ -8,7 +8,7 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = () => {
+const TarjetaEpisodio: React.FC = () => {
 
     return <div className="tarjeta-episodio">
             <h4>Close Rick-counters of the Rick Kind</h4>

@@ -8,7 +8,7 @@ import './encabezado.css';
  *
  * @returns {JSX.Element}
  */
-const Encabezado = () => {
+const Encabezado: React.FC = () => {
 
     return <header>
             <div>
