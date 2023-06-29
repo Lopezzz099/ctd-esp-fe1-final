@@ -9,6 +9,10 @@ const Filtros: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const inputValue = useSelector((state: RootState) => state.input.value);
 
+  /**
+   * Maneja el cambio en el valor del campo de entrada y realiza la búsqueda de personajes.
+   * @param event El evento de cambio del campo de entrada.
+   */
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setInputValue(event.target.value));
     dispatch(fetchCharacters({ page: 1, name: event.target.value }));

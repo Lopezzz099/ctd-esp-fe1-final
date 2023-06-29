@@ -8,12 +8,12 @@ import { fetchCharacters } from "../../features/characters/characterSlice";
 import { Character } from "../../types/types";
 
 /**
- * Grilla de personajes para la pagina de inicio
+ * Componente de la grilla de personajes para la página de inicio.
  *
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
+ * @param {Object} props - Propiedades del componente GrillaPersonajes.
+ * @param {boolean} [props.favs=false] - Indica si se deben mostrar solo los favoritos.
  *
- *
- * @returns un JSX element
+ * @returns Un elemento JSX que representa la grilla de personajes.
  */
 interface GrillaPersonajesProps {
   favs?: boolean;
@@ -56,9 +56,6 @@ const GrillaPersonajes: React.FC<GrillaPersonajesProps> = ({ favs = false }) => 
           ))}
         </>
       )}
-      {/* //   <TarjetaPersonaje />
-    //   <TarjetaPersonaje />
-    //   <TarjetaPersonaje /> */}
     </div>
   );
 };

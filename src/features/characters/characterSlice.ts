@@ -1,6 +1,7 @@
 import { PayloadAction, SerializedError, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Character, CharactersState, PaginationInfo } from "../../types/types";
 
+// Estado inicial
 const initialState: CharactersState = {
   characters: [],
   pagination: {
@@ -13,6 +14,7 @@ const initialState: CharactersState = {
   error: null,
 };
 
+// Acción asincrónica para obtener los personajes
 export const fetchCharacters = createAsyncThunk(
   'characters/fetch',
   async ({ page, name }: { page: number; name: string }) => {
@@ -28,6 +30,7 @@ export const fetchCharacters = createAsyncThunk(
   }
 )
 
+// Slice de Redux para los personajes
 const characterSlice = createSlice({
   name: 'characters',
   initialState,

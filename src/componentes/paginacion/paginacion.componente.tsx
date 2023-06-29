@@ -19,11 +19,16 @@ const Paginacion: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const loading = useSelector((state: RootState) => state.characters.loading);
-  const pagination = useSelector((state: RootState) => state.characters.pagination);
+  const pagination = useSelector(
+    (state: RootState) => state.characters.pagination
+  );
   const error = useSelector((state: RootState) => state.characters.error);
   const hasError = Boolean(error);
   const name = useSelector((state: RootState) => state.input.value);
 
+  /**
+   * Maneja el evento del botón "Siguiente" y carga la siguiente página de personajes.
+   */
   const handleNextPage = () => {
     if (pagination.next) {
       const nextPage = currentPage + 1;
@@ -32,6 +37,9 @@ const Paginacion: React.FC = () => {
     }
   };
 
+  /**
+   * Maneja el evento del botón "Anterior" y carga la página anterior de personajes.
+   */
   const handlePrevPage = () => {
     if (pagination.prev) {
       const prevPage = currentPage - 1;
@@ -43,16 +51,16 @@ const Paginacion: React.FC = () => {
   return (
     <div className="paginacion">
       <button
-        disabled={ !pagination.prev || loading || hasError }
-        onClick={ handlePrevPage }
-        className={ "primary" }
+        disabled={!pagination.prev || loading || hasError}
+        onClick={handlePrevPage}
+        className={"primary"}
       >
         Anterior
       </button>
       <button
-        disabled={ !pagination.next || loading || hasError }
-        onClick={ handleNextPage }
-        className={ "primary" }
+        disabled={!pagination.next || loading || hasError}
+        onClick={handleNextPage}
+        className={"primary"}
       >
         Siguiente
       </button>
