@@ -32,7 +32,7 @@ const GrillaPersonajes: React.FC<GrillaPersonajesProps> = ({ favs = false }) => 
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCharacters({ page: 1 }));
+    dispatch(fetchCharacters({ page: 1, name: "" }));
   }, [dispatch]);
 
   const favorites = useSelector((state: RootState) => state.favs.favs);

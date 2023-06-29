@@ -15,42 +15,44 @@ import { useState } from "react";
  */
 
 const Paginacion: React.FC = () => {
-  const [num, setNum] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const dispatch: AppDispatch = useDispatch();
 
   const loading = useSelector((state: RootState) => state.characters.loading);
-
-  const pagination = useSelector(
-    (state: RootState) => state.characters.pagination
-  );
+  const pagination = useSelector((state: RootState) => state.characters.pagination);
+  const error = useSelector((state: RootState) => state.characters.error);
+  const hasError = Boolean(error);
+  const name = useSelector((state: RootState) => state.input.value);
 
   const handleNextPage = () => {
     if (pagination.next) {
-      setNum(num + 1);
-      dispatch(fetchCharacters({ page: num + 1 }));
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      dispatch(fetchCharacters({ page: nextPage, name: name }));
     }
   };
 
   const handlePrevPage = () => {
     if (pagination.prev) {
-      setNum(num - 1);
-      dispatch(fetchCharacters({ page: num - 1 }));
+      const prevPage = currentPage - 1;
+      setCurrentPage(prevPage);
+      dispatch(fetchCharacters({ page: prevPage, name: name }));
     }
   };
 
   return (
     <div className="paginacion">
       <button
-        disabled={!pagination.prev || loading}
-        onClick={handlePrevPage}
-        className={"primary"}
+        disabled={ !pagination.prev || loading || hasError }
+        onClick={ handlePrevPage }
+        className={ "primary" }
       >
         Anterior
       </button>
       <button
-        disabled={!pagination.next || loading}
-        onClick={handleNextPage}
-        className={"primary"}
+        disabled={ !pagination.next || loading || hasError }
+        onClick={ handleNextPage }
+        className={ "primary" }
       >
         Siguiente
       </button>

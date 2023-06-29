@@ -9,7 +9,7 @@ const BotonLimpiar: React.FC = () => {
 
   const handleClean = () => {
     dispatch(clearInputValue());
-    dispatch(fetchCharacters({ page: 1 }));
+    dispatch(fetchCharacters({ page: 1, name: "" }));
   };
 
   return (
